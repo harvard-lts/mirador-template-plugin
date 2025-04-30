@@ -19,7 +19,7 @@ jobs:
           git config --local user.name "LTS GitHub Actions"
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
