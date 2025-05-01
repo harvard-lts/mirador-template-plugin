@@ -10,17 +10,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
-          token: ${{ secrets.ACCESS_TOKEN }}
+          fetch-depth: 0
 
       - run: |
-          git config user.name "Github Action"
-          git config user.email actions@github.com
+          git config --local user.email "${{ vars.ORG_EMAIL }}"
+          git config --local user.name "LTS GitHub Actions"
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
