@@ -29,8 +29,6 @@ jobs:
 
       - name: Create new version
         run: |
-          TAG_NAME="${GITHUB_REF##*/}"
-          npm version "$TAG_NAME"
           git push origin HEAD:${{ github.event.release.target_commitish }}
 
       - name: Publish to npm
