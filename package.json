@@ -6,9 +6,12 @@
   "source": "src/index.js",
   "module": "es/index.js",
   "scripts": {
-    "prebuild": "rm -rf dist && rm -rf es",
+    "clean": "rm -rf ./dist && rm -rf ./demo/dist",
+    "prebuild": "npm run clean",
     "prepublishOnly": "npm run build",
-    "build": "parcel build",
+    "build": "run-p build:es",
+    "build:es": "rollup -c",
+    "serve": "webpack serve --mode development --open",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
