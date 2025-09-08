@@ -1,5 +1,9 @@
-import MiradorTemplatePlugin from "./plugins/MiradorTemplatePlugin";
+import miradorTemplatePlugin from './plugins/MiradorTemplatePlugin';
 
-export { MiradorTemplatePlugin };
+export {
+  miradorTemplatePlugin,
+};
 
-export default MiradorTemplatePlugin;
+export default [
+  miradorTemplatePlugin,
+];
