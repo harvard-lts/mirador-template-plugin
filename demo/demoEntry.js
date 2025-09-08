@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     id: "mirador",
     windows: [
       {
-        manifestId: "https://nrs.lib.harvard.edu/URN-3:HUAM:925863:MANIFEST:3",
-      },
-    ],
+        manifestId: "https://nrs.lib.harvard.edu/URN-3:HUAM:925863:MANIFEST:3"
+      }
+    ]
   };
 
   const plugins = [...Plugin];
