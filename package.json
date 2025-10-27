@@ -1,6 +1,6 @@
 {
   "name": "@harvard-lts/mirador-template-plugin",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Template for Harvard mps-viewer Mirador plugins",
   "main": "dist/index.js",
   "source": "src/index.js",
