@@ -2,9 +2,10 @@
   "name": "@harvard-lts/mirador-template-plugin",
   "version": "0.1.9",
   "description": "Template for Harvard mps-viewer Mirador plugins",
-  "main": "dist/index.js",
-  "source": "src/index.js",
-  "module": "es/index.js",
+  "module": "dist/es/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf ./dist && rm -rf ./demo/dist",
     "prebuild": "npm run clean",
