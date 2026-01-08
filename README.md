@@ -18,6 +18,8 @@ The following are some useful scripts can be ran using `npm run <script>`. A ful
 | Script  | Description                                                                                                                |
 | ------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `build` | Builds the source files into the `./dist` directory                                                                        |
+| `serve` | Spins up the local development server at http://localhost:9000                                                             |
+| `test`  | Runs the test suite                                                                                                        |
 
 ## Installing in Mirador
 
