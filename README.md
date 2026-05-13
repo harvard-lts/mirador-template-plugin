@@ -24,13 +24,39 @@ The following are some useful scripts can be ran using `npm run <script>`. A ful
 
 ## Installing in Mirador
 
-The `mirador-template-plugin` requires an instance of Mirador 3. Visit the [Mirador wiki](https://github.com/ProjectMirador/mirador/wiki) to learn how to [install an existing plugin](https://github.com/ProjectMirador/mirador/wiki/Mirador-3-plugins#installing-an-existing-plugin) and for additional information about plugins.
+The `mirador-template-plugin` requires an instance of Mirador 4. Visit the [Mirador wiki](https://github.com/ProjectMirador/mirador/wiki) to learn how to install an existing plugin and for additional information about plugins.
 
 Package you will need to install:
 
 ```bash
 npm i @harvard-lts/mirador-template-plugin
+```
 
+## v4 plugin skeleton
+
+A Mirador 4 plugin is a default-exported object with this shape:
+
+```js
+{
+  target: 'Window',          // which Mirador component to attach to
+  mode: 'add' | 'wrap',      // add alongside, or wrap the target
+  component: MyComponent,    // React component (class or functional)
+  mapStateToProps,           // optional — Redux state selectors
+  mapDispatchToProps,        // optional — Redux action creators
+}
+```
+
+Two key differences from v3:
+
+1. **Flat imports.** Import Mirador selectors and actions from the package root, not from `mirador/dist/es/src/...`:
+
+   ```js
+   import { getManifestoInstance, setCanvas, updateWindow } from 'mirador';
+   ```
+
+2. **Peer dependencies.** Mirador, React, `@mui/*`, and `@emotion/*` must live in `peerDependencies` so the host app's copies are used. See this repo's `package.json` for the exact ranges.
+
+Plugin components can be written as either class components or functional components with hooks — see [`src/plugins/MiradorTemplatePlugin.js`](./src/plugins/MiradorTemplatePlugin.js) for both styles.
 
 ## Contribute
 Mirador's development, design, and maintenance is driven by community needs and ongoing feedback and discussion. Join us at our regularly scheduled community calls, on [IIIF slack #mirador](http://bit.ly/iiif-slack), or the [mirador-tech](https://groups.google.com/forum/#!forum/mirador-tech) and [iiif-discuss](https://groups.google.com/forum/#!forum/iiif-discuss) mailing lists. To suggest features, report bugs, and clarify usage, please submit a GitHub issue.
