@@ -35,6 +35,6 @@ jobs:
         run: npm ci
 
       - name: Publish to npm
-        run: npm publish --access=public --provenance
+        run: npm publish --access=public
         env:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
