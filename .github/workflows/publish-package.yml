@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -23,9 +23,9 @@ jobs:
           if [ "v$NODE_VERSION" != $LATEST_TAG ]; then echo "Github tag ($LATEST_TAG) and version ($NODE_VERSION) don't match" && exit 1; fi
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22       # >= 22.14.0; satisfies trusted publishing requirement
+          node-version: 24       #  Actions will be forced to run with Node.js 24 by default starting June 16th
           registry-url: "https://registry.npmjs.org"
 
       - name: Upgrade npm
@@ -36,3 +36,5 @@ jobs:
 
       - name: Publish to npm
         run: npm publish --access=public --provenance
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
