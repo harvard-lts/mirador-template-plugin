@@ -27,6 +27,7 @@ jobs:
         with:
           node-version: 24       #  Actions will be forced to run with Node.js 24 by default starting June 16th
           registry-url: "https://registry.npmjs.org"
+          scope: "@harvard-lts"
 
       - name: Upgrade npm
         run: npm install -g npm@latest    # ensure npm >= 11.5.1
@@ -40,22 +41,25 @@ jobs:
             fi
           done
 
-      - name: Show .npmrc contents
+      - name: Check OIDC env vars
         run: |
-          echo "NPM_CONFIG_USERCONFIG=$NPM_CONFIG_USERCONFIG"
-          for f in "$NPM_CONFIG_USERCONFIG" "$HOME/.npmrc" ./.npmrc; do
-            echo "--- $f ---"
-            if [ -n "$f" ] && [ -f "$f" ]; then
-              cat "$f"
-            else
-              echo "(not present)"
-            fi
-          done
-          echo "--- npm config (effective) ---"
-          npm config list
+          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
+            echo "ACTIONS_ID_TOKEN_REQUEST_URL is set"
+          else
+            echo "ACTIONS_ID_TOKEN_REQUEST_URL is EMPTY"
+          fi
+          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_TOKEN" ]; then
+            echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN is set"
+          else
+            echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN is EMPTY"
+          fi
+          echo "GITHUB_ACTIONS=$GITHUB_ACTIONS"
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "GITHUB_WORKFLOW_REF=$GITHUB_WORKFLOW_REF"
+          echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Publish to npm
-        run: npm publish --access=public --provenance
+        run: npm publish --access=public --provenance --loglevel=verbose
