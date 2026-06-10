@@ -26,17 +26,23 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24       #  Actions will be forced to run with Node.js 24 by default starting June 16th
+          registry-url: "https://registry.npmjs.org"
 
       - name: Upgrade npm
         run: npm install -g npm@latest    # ensure npm >= 11.5.1
 
-      - name: Print npm version
-        run: npm --version
+      - name: Strip empty _authToken from .npmrc so OIDC can activate
+        run: sed -i '/_authToken=\${NODE_AUTH_TOKEN}/d' "$HOME/.npmrc"
+
+      - name: Show .npmrc contents
+        run: |
+          echo "--- $HOME/.npmrc ---"
+          cat "$HOME/.npmrc" 2>/dev/null || echo "(no ~/.npmrc)"
+          echo "--- ./.npmrc ---"
+          cat ./.npmrc 2>/dev/null || echo "(no repo-local .npmrc)"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Publish to npm
         run: npm publish --access=public --provenance
-        env:
-          NPM_CONFIG_PROVENANCE: true
