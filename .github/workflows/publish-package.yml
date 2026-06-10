@@ -32,14 +32,27 @@ jobs:
         run: npm install -g npm@latest    # ensure npm >= 11.5.1
 
       - name: Strip empty _authToken from .npmrc so OIDC can activate
-        run: sed -i '/_authToken=\${NODE_AUTH_TOKEN}/d' "$HOME/.npmrc"
+        run: |
+          for f in "$NPM_CONFIG_USERCONFIG" "$HOME/.npmrc" ./.npmrc; do
+            if [ -n "$f" ] && [ -f "$f" ]; then
+              echo "Stripping _authToken line from $f"
+              sed -i '/_authToken=\${NODE_AUTH_TOKEN}/d' "$f"
+            fi
+          done
 
       - name: Show .npmrc contents
         run: |
-          echo "--- $HOME/.npmrc ---"
-          cat "$HOME/.npmrc" 2>/dev/null || echo "(no ~/.npmrc)"
-          echo "--- ./.npmrc ---"
-          cat ./.npmrc 2>/dev/null || echo "(no repo-local .npmrc)"
+          echo "NPM_CONFIG_USERCONFIG=$NPM_CONFIG_USERCONFIG"
+          for f in "$NPM_CONFIG_USERCONFIG" "$HOME/.npmrc" ./.npmrc; do
+            echo "--- $f ---"
+            if [ -n "$f" ] && [ -f "$f" ]; then
+              cat "$f"
+            else
+              echo "(not present)"
+            fi
+          done
+          echo "--- npm config (effective) ---"
+          npm config list
 
       - name: Install dependencies
         run: npm ci
