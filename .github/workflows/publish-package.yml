@@ -26,7 +26,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24       #  Actions will be forced to run with Node.js 24 by default starting June 16th
-          registry-url: "https://registry.npmjs.org"
 
       - name: Upgrade npm
         run: npm install -g npm@latest    # ensure npm >= 11.5.1
@@ -35,6 +34,6 @@ jobs:
         run: npm ci
 
       - name: Publish to npm
-        run: npm publish --access=public --provenance
+        run: npm publish --access=public
         env:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
