@@ -1,6 +1,6 @@
 {
   "name": "@harvard-lts/mirador-template-plugin",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Template for Harvard mps-viewer Mirador plugins",
   "module": "dist/es/index.js",
   "files": [
@@ -27,7 +27,6 @@
   "homepage": "https://github.com/harvard-lts/mirador-template-plugin#readme",
   "dependencies": {
     "jquery": "^3.7.0",
-    "node": "^24.11.1",
     "prop-types": "^15.8.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
