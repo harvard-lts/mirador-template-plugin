@@ -9,9 +9,7 @@ const mapStateToProps = (state, { windowId }) => ({
 class miradorTemplate extends Component {
   render() {
 
-    return (
-      <></>
-    );
+    return ("");
   }
 
   componentDidMount() {
