@@ -1,4 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+
+// Mock `mirador` so importing the plugin doesn't load the full Mirador bundle
+// (which triggers a jsdom canvas error during the test run).
+vi.mock('mirador', () => ({
+  getManifestoInstance: vi.fn(),
+}));
+
 import plugins, { miradorTemplatePlugin } from '../src/index.js';
 
 describe('mirador-template-plugin smoke test', () => {
