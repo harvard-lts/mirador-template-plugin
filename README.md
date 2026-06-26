@@ -2,6 +2,15 @@
 
 Template for Harvard mps-viewer Mirador plugins.
 
+## Compatibility
+
+This plugin is compatible with **Mirador 4** (React 18/19, MUI 7). It is **not**
+backwards compatible with Mirador 3, and upgrading from an older version
+contains breaking changes — internal `mirador/dist/...` imports now resolve from
+the top-level `mirador` package, components use React function/hook patterns, and
+the build/styling stack moved to MUI 7 + Emotion. Mirador 4 versions are tagged
+`2.x`; if you still need Mirador 3 support, pin a `0.x` or `1.x` release.
+
 ## Requirements
 
 - [NVM](https://github.com/nvm-sh/nvm)
@@ -24,13 +33,13 @@ The following are some useful scripts can be ran using `npm run <script>`. A ful
 
 ## Installing in Mirador
 
-The `mirador-template-plugin` requires an instance of Mirador 3. Visit the [Mirador wiki](https://github.com/ProjectMirador/mirador/wiki) to learn how to [install an existing plugin](https://github.com/ProjectMirador/mirador/wiki/Mirador-3-plugins#installing-an-existing-plugin) and for additional information about plugins.
+The `mirador-template-plugin` requires an instance of Mirador 4. Visit the [Mirador wiki](https://github.com/ProjectMirador/mirador/wiki) to learn how to [create a Mirador 4 plugin](https://github.com/ProjectMirador/mirador/wiki/Creating-a-Mirador-4-Plugin) and for additional information about plugins.
 
 Package you will need to install:
 
 ```bash
 npm i @harvard-lts/mirador-template-plugin
-
+```
 
 ## Contribute
 Mirador's development, design, and maintenance is driven by community needs and ongoing feedback and discussion. Join us at our regularly scheduled community calls, on [IIIF slack #mirador](http://bit.ly/iiif-slack), or the [mirador-tech](https://groups.google.com/forum/#!forum/mirador-tech) and [iiif-discuss](https://groups.google.com/forum/#!forum/iiif-discuss) mailing lists. To suggest features, report bugs, and clarify usage, please submit a GitHub issue.
