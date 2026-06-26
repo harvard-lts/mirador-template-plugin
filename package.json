@@ -14,6 +14,7 @@
     "build:es": "rollup -c",
     "serve": "vite",
     "test": "vitest run",
+    "test:unit": "node scripts/coverage-ci.mjs",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest"
   },
