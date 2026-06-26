@@ -8,8 +8,8 @@ This plugin is compatible with **Mirador 4** (React 18/19, MUI 7). It is **not**
 backwards compatible with Mirador 3, and upgrading from an older version
 contains breaking changes — internal `mirador/dist/...` imports now resolve from
 the top-level `mirador` package, components use React function/hook patterns, and
-the build/styling stack moved to MUI 7 + Emotion. Pin an earlier release if you
-still need Mirador 3 support.
+the build/styling stack moved to MUI 7 + Emotion. Mirador 4 versions are tagged
+`2.x`; if you still need Mirador 3 support, pin a `0.x` or `1.x` release.
 
 ## Requirements
 
