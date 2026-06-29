@@ -1,5 +1,9 @@
 # mirador-template-plugin
 
+[![Node Unit Tests](https://github.com/harvard-lts/mirador-template-plugin/actions/workflows/coverage-node.yml/badge.svg)](https://github.com/harvard-lts/mirador-template-plugin/actions/workflows/coverage-node.yml)
+
+<a href="https://github.com/harvard-lts/mirador-template-plugin/actions/workflows/coverage-node.yml"><img src="https://github.com/harvard-lts/mirador-template-plugin/raw/badges/test-coverage/coverage.svg"></a>
+
 Template for Harvard mps-viewer Mirador plugins.
 
 ## Compatibility
