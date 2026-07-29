@@ -37,7 +37,7 @@ jobs:
       - name: Upload coverage badge artifact
         # Runs on every branch so the badge can be previewed from the run summary
         # without publishing to the badges/test-coverage branch.
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-badge
           path: |
