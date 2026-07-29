@@ -34,6 +34,17 @@ jobs:
       - name: Generate coverage badge
         run: node scripts/make-coverage-badge.mjs
 
+      - name: Upload coverage badge artifact
+        # Runs on every branch so the badge can be previewed from the run summary
+        # without publishing to the badges/test-coverage branch.
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-badge
+          path: |
+            coverage.svg
+            coverage/coverage-summary.json
+          if-no-files-found: error
+
       - name: Publish coverage badge
         # Only publish from pushes to the default branch — PRs (including from
         # forks) run the tests but never push the badge branch.
